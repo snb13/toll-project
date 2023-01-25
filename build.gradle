@@ -1,3 +1,12 @@
-project(':common') {
+subprojects {
     apply plugin: 'java'
+}
+
+project(':common') {
+}
+
+project(':server-core') {
+}
+
+project(':tracker-core') {
 }
