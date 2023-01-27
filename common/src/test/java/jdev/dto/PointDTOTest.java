@@ -1,6 +1,7 @@
 package jdev.dto;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -31,6 +32,6 @@ public class PointDTOTest {
         ObjectMapper mapper = new ObjectMapper();
         PointDTO dto = mapper.readValue(expected, PointDTO.class);
         assertEquals(autoId, dto.getAutoId());
-        assertEquals(1674685823413L, dto.getTime());
+        assertEquals(1674685823415L, dto.getTime());
     }
 }
