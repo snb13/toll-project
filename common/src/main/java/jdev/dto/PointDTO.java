@@ -2,12 +2,15 @@ package jdev.dto;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 
 public class PointDTO {
     private double lat;
     private double lon;
     private String autoId;
     private long time;
+
+    private String json;
 
     public double getLat() {
         return lat;
@@ -38,13 +41,26 @@ public class PointDTO {
         return mapper.writeValueAsString(this);
     }
 
+    public PointDTO decodeDTO() throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.readValue(json, PointDTO.class);
+    }
+
+    public void setJson() {
+        this.json = "{" +
+                "\"lat\" : " + lat +
+                ", \"lon\" : " + lon +
+                ", \"autoId\" : " + autoId +
+                "}";
+    }
+
     @Override
     public String toString() {
         return "PointDTO{" +
                 "lat=" + lat +
                 ", lon=" + lon +
-                ", autoId='" + autoId + '\'' +
-                '}';
+                ", autoId=" + autoId +
+                "}";
     }
 
     public void setTime(long time) {
@@ -54,4 +70,10 @@ public class PointDTO {
     public long getTime() {
         return time;
     }
+
+    public String getJson() {
+        return json;
+    }
+
+
 }
